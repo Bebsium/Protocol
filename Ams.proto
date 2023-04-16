@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package Ams;
+
+option csharp_namespace = "Protocol.Ams";
+
+import "Protos/Common.proto";
+
+service AmsService {
+    rpc GetPublicKey (Common.Empty) returns (GetPublicKeyResponse) {}
+
+    rpc Login (LoginRequest) returns (LoginResponse) {}
+    rpc Logout (LogoutRequest) returns (Common.Empty) {}
+}
+
+message GetPublicKeyResponse {
+    Common.Response result = 1;
+    string key = 2;
+}
+
+message LoginRequest {
+    string user = 1;
+    string pwd = 2;
+    uint32 service = 3;
+}
+
+message LoginResponse {
+    Common.Response result = 1;
+    string token = 2;
+    string refresh = 3;
+}
+
+message LogoutRequest {
+    string token = 3;
+}

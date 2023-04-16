@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package Common;
+
+option csharp_namespace = "Protocol.Common";
+
+enum Result {
+    Success = 0;
+    Failed = 1;
+    Unknown = 9;
+}
+
+message Response {
+    Result result = 1;
+    optional string msg = 2;
+}
+
+message Empty {
+    
+}
